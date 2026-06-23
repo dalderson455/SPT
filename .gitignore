@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Mac system files
+.DS_Store
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Output directories and files
+Output_Figures/
+TraceData/
+*.csv
+*.png
+*.tif
+*.tiff
+*.nd2
+*.npz
+
+# IDE config files
+.vscode/
+.idea/

@@ -1,0 +1,47 @@
+tracking:
+  log_thresh_multiplier: 5.0
+  SNR_min: 0.4
+  disk_radius: 5
+  subarray_halfwidth: 8
+  inner_circle_radius: 5
+  gauss_mask_sigma: 2
+  error_set: 0.05
+  sigmaFit_min: 0
+  sigmaFit_max: 5
+  guess_sigma_Fit: 3
+  d_01_max: 5
+  Iratio_01_min: 0.5
+  Iratio_01_max: 3.0
+  gap_frames: 0
+  satPixelVal: 10000000000
+
+isingle:
+  min_track_length: 5
+  penalty_scale: 1.0
+  ck_window: 5
+  ck_power: 10
+
+stoichiometry:
+  n_frames: 3
+  min_frames: 3
+  n_frames_after_laser_on: 10
+  kde_bandwidth: 5
+  threshold: 150
+
+
+trace_simulator:
+  n_min: 1
+  n_max: 64
+  n_prior: "uniform"
+  n_frames: 200
+  p_bleach: 0.0022
+  p_blink_off: 0.005
+  p_blink_on: 0.30
+  p_bleach_from_off: 0.0
+  i_single: 700.0
+  brightness_cv: 0.30
+  p_mature: 1.0
+  noise_gain: 5400.0
+  sigma_add: 600.0
+  allow_negative: True
+  store_latent: True
