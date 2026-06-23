@@ -1,8 +1,8 @@
-# PythonSPT (Work In Progress)
+# PythonSPT
 
-**Note: This project is currently a Work In Progress (WIP).**
+**Note: This project is currently under active development.**
 
-A lightweight Python implementation of single-molecule tracking and stoichiometry analysis. It uses Laplacian of Gaussian (LoG) detection, iterative centre-of-mass localisation, and LAP tracking to resolve sub-pixel molecular trajectories, followed by step-wise photobleaching analysis to estimate molecular stoichiometry.
+A lightweight Python implementation of single-molecule tracking and stoichiometry analysis. It uses Laplacian of Gaussian (LoG) detection, iterative localisation, and LAP tracking to resolve sub-pixel molecular trajectories, followed by step-wise photobleaching analysis to estimate molecular stoichiometry.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ python3 run_pipeline.py /path/to/Video.tif --mask /path/to/Mask.tif --save-csv t
 
 ### CSV Output Format
 
-If you provide the `--save-csv` flag, the pipeline will export the raw trajectories. This format is mathematically equivalent to the `Spots` array in the original MATLAB reference code. The columns include:
+If you provide the `--save-csv` flag, the pipeline will export the raw trajectories. The columns include:
 
 *   `x` and `y`: Sub-pixel spatial coordinates.
 *   `frame`: The video frame number.
@@ -42,6 +42,6 @@ If you provide the `--save-csv` flag, the pipeline will export the raw trajector
 
 ## Architecture
 
-* `TrackingAndStoichiometry/core/tracker.py`: Contains the core detection (LoG) and iterative centre-of-mass localisation logic. The iterative convergence loop is JIT-compiled to native C via Numba.
-* `TrackingAndStoichiometry/core/isingle.py`: Extracts the consensus single-fluorophore intensity from the dataset using kernel density estimations and the Chung-Kennedy filter.
-* `TrackingAndStoichiometry/core/stoichiometry.py`: Fits lines to the initial photobleaching steps of each valid trajectory to extrapolate the intensity at the exact moment the laser turns on.
+* `TrackingAndStoichiometry/core/tracker.py`: Contains the core detection (LoG) and iterative localisation logic.
+* `TrackingAndStoichiometry/core/isingle.py`: Extracts the consensus single-fluorophore intensity from the dataset using pairwise distance distribution, Chung-Kennedy filtering and bayesian changepoint analysis.
+* `TrackingAndStoichiometry/core/stoichiometry.py`: Fits lines to the initial photobleaching steps of each valid trajectory to extrapolate the intensity at the first illumination frame.
